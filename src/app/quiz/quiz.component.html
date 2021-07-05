@@ -1,0 +1,50 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="main-container">
+    <h1 class="title col-5 float-left">New Quiz</h1>
+    <button class="float-right share-button" (click)="redirectToFormula();" mat-stroked-button color="primary">
+      Formula Editor</button>
+      <div class="clearfix"></div>
+    <br />
+    <div class="inner-container">
+      <br />
+      <mat-form-field class="example-full-width" appearance="outline">
+        <input matInput placeholder="Quiz mame" value="">
+      </mat-form-field> &nbsp;
+      <mat-form-field class="example-full-width" appearance="outline">
+        <input matInput placeholder="Details" value="">
+      </mat-form-field>
+      <button class="float-right share-button" mat-stroked-button color="primary">
+        <mat-icon aria-hidden="false" class="icon-style share">
+          share</mat-icon> Share
+      </button>
+      <br />
+      <hr>
+      <br />
+       <div *ngFor="let ques of questions; let i = index">
+        <div class="col-11 float-left">
+          <p class="question">{{ques.question}} </p>
+        </div>
+        <div class="col-1 float-right text-center vertical-align">
+          <mat-icon (click)="deleteQuestion(i)" aria-hidden="false" class="icon-style">
+            highlight_off</mat-icon>
+        </div>
+        <div class="clearfix"></div>
+        <div class="options">
+          <mat-radio-group aria-label="Select an option">
+            <ng-container *ngFor="let opts of ques.options; let j = index">
+              <mat-radio-button [value]="j">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <input matInput placeholder="Option" [value]="opts.name">
+                </mat-form-field>
+              </mat-radio-button> &nbsp;
+              <mat-icon (click)="deleteOption(i, j)" aria-hidden="false" class="icon-style">highlight_off</mat-icon>
+              <br /><br />
+            </ng-container>
+          </mat-radio-group>
+          <button class="add-option" mat-stroked-button color="primary" (click)="addOption(i);">+ Add Option</button>
+          <div class="clearfix"></div>
+          <br />
+        </div>
+      </div>
+    </div>
+  </div>

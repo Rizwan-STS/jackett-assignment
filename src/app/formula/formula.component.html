@@ -1,0 +1,25 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="main-container">
+    <h1 class="title col-8 float-left">Formula</h1>
+    <button class="float-right share-button" (click)="redirectToQuiz();" mat-stroked-button color="primary">
+        New Quiz</button>
+    <div class="clearfix"></div>
+    <br />
+    <div class="inner-container">
+        <br />
+        <mat-form-field class="example-full-width col-md-12" appearance="outline">
+            <input matInput placeholder="Paste Latex" value="" [(ngModel)]="latexVal" (blur)="changeLatex()">
+        </mat-form-field> &nbsp;
+        <br/>
+        <ckeditor [(ngModel)]="model.editorData" [editor]="Editor" (ready)="onReady($event)"></ckeditor>
+
+        <br />
+
+        <div [(appMath)]="mathMl" *ngIf="showLatex" style="display: none;"></div>
+
+        <!-- <textarea cols="10" id="editorx21" name="editorx21" rows="10" -->
+        <!-- data-sample-short></textarea> -->
+      
+
+    </div>
+</div>
